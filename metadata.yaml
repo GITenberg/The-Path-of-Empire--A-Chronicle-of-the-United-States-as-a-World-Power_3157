@@ -1,0 +1,28 @@
+_repo: The-Path-of-Empire--A-Chronicle-of-the-United-States-as-a-World-Power_3157
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Fish, Carl Russell
+    birthdate: 1876
+    deathdate: 1932
+    gutenberg_agent_id: '1123'
+    url: http://www.gutenberg.org/2009/agents/1123
+description: Chronicles of America series; v. 46
+gutenberg_bookshelf:
+- United States
+- Children's History
+gutenberg_issued: '2002-04-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '3157'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'United States -- Foreign relations'
+- !lcsh 'United States -- Territorial expansion'
+- !lcc 'E151'
+- GITenberg
+title: 'The Path of Empire: A Chronicle of the United States as a World Power'
+url: http://www.gutenberg.org/ebooks/3157
