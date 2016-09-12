@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: XT+bNPp1MBjkqDynv76Qi+KUxx6Q8bQ6QvnrZredlXqrPgQB5UpwMpNpTWzW/pS7leM2912m9hPj0mHgHFLWRwLX9hbwETEuwWJASZh9/rqbCE1c4y2k3/Iyd/DUoFidq/9+6bASdMq6/ahoJSgl4Ixj7zdZxTy+FtPouSNruOoGqVR/C3TSdbWAXh2hxrhj5gL7O578lEjZd0lQdUy8OodQ/PNTWBEyhnTCSmtvveMpHr8qCWmMCHlAzoyuvCGQerZax75KIIIPTkiwFyTR7E9imbInnXRCtJskGcYWJnj5YawKPXfONdsDQdoA6x1P5m9KpaKtYtBvfGkHhdzGp2wQ+oxpJrf9QPJlTjkkq2KnedtR58YpnrCxz8WnUn7wDuCVNuzdLMOQKQtefzs1bo4VdIiesSo0IjZhwNf3IglCsTnSsS/zKmvbiOit32XAyLG5QvqViRq/dkWJbcso6oHxfLBpAk6rgHy15E3YfQVTFMTtHobg2CxunJZkaqEYWfFVktg4B1gLxzAUaOdXXQgYGxKNbYue2y2viIqHjsdKfN2fggD/MFUFKYWwpg/S07Ke+gVr2NBoiYplZ9hmqXDt1NLYNp8SzMjJsGAJELmvLws4UB0K8/p6UF+iT/yq90i4YDONhX8m7Iwf1eO0C4lHACGSNQ0tPb5wlxy6PLc=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Path-of-Empire--A-Chronicle-of-the-United-States-as-a-World-Power_3157
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
