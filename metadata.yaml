@@ -1,5 +1,8 @@
 _repo: The-Path-of-Empire--A-Chronicle-of-the-United-States-as-a-World-Power_3157
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Fish, Carl Russell
@@ -8,6 +11,8 @@ creator:
     gutenberg_agent_id: '1123'
     url: http://www.gutenberg.org/2009/agents/1123
 description: Chronicles of America series; v. 46
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/3157#The-Path-of-Empire--A-Chronicle-of-the-United-States-as-a-World-Power
 gutenberg_bookshelf:
 - United States
 - Children's History
